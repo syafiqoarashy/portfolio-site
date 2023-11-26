@@ -1,0 +1,33 @@
+.projects {
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .header {
+    color: var(--Main-Black, #181717);
+    font-family: Inter, serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.5%; /* 21.87px */
+    letter-spacing: -0.54px;
+    margin-bottom: 12px;
+    //text-align: right;
+  }
+  .header img {
+    padding-right: 16px;
+  }
+
+  .footer {
+    color: var(--Main-Black, #181717);
+    font-family: Inter, serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.5%; /* 21.87px */
+    letter-spacing: -0.54px;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+}
