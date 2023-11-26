@@ -1,7 +1,8 @@
 'use client';
 import styles from './page.module.scss'
 import { useEffect, useState } from 'react'
-import Landing from '../components/Landing';
+import Landing from '../components/landing';
+import Description from '../components/description';
 import { AnimatePresence } from 'framer-motion';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
 
                 const locomotiveScroll = new LocomotiveScroll();
 
+
             }
 
         )()
@@ -28,6 +30,7 @@ export default function Home() {
             {/*    {isLoading && <Preloader />}*/}
             {/*</AnimatePresence>*/}
             <Landing />
+            <Description />
         </main>
     )
 }

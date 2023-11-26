@@ -50,8 +50,8 @@ export default function Home() {
                 alt={"image"}/>
             <div className={styles.sliderContainer}>
                 <div ref={slider} className={styles.slider}>
-                    <p ref={firstText}>Developer and Designer -</p>
-                    <p ref={secondText}>Developer and Designer -</p>
+                    <p ref={firstText}>🧑🏻‍💻Developer and 🧑🏻‍🎨Designer -</p>
+                    <p ref={secondText}>🧑🏻‍💻Developer and 🧑🏻‍🎨Designer -</p>
                 </div>
             </div>
         </main>
