@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import Landing from '../components/landing';
 import Description from '../components/description';
 import Projects from '../components/projects';
-import { AnimatePresence } from 'framer-motion';
+import Footer from '../components/footer';
 
 export default function Home() {
 
@@ -33,6 +33,7 @@ export default function Home() {
             <Landing />
             <Description />
             <Projects />
+            <Footer />
         </main>
     )
 }

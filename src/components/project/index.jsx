@@ -1,6 +1,7 @@
 'use client';
 import styles from './style.module.scss';
 import Image from "next/image";
+import Magnetic from "../magnetic"
 
 export default function index({ title, description, techStack, imageSrc }) {
     return (
@@ -16,12 +17,14 @@ export default function index({ title, description, techStack, imageSrc }) {
                             <div className={styles.skills}>{techStack}</div>
                         </div>
                         <div className={styles.thumbnail}>
+                            <Magnetic>
                             <Image
                                 width={550}
                                 height={364}
                                 src={imageSrc}
                                 alt="image"
                             />
+                            </Magnetic>
                         </div>
                     </div>
                     <div className={styles.divide}></div>
