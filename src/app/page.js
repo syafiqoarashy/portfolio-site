@@ -5,6 +5,8 @@ import Landing from '../components/landing';
 import Description from '../components/description';
 import Projects from '../components/projects';
 import Footer from '../components/footer';
+import { Metadata } from 'next';
+
 
 export default function Home() {
 
