@@ -10,9 +10,6 @@ export default function index() {
             <div className={styles.contact}>
                     syafiqoarashy@gmail.com
             </div>
-            <div className={styles.contact}>
-                +62 812 8422 9397
-            </div>
         </div>
     )
 }
