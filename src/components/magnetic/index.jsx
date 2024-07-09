@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap';
 
-export default function index({children}) {
+export default function Magnetic({children}) {
     const magnetic = useRef(null);
 
     useEffect( () => {
@@ -23,6 +23,8 @@ export default function index({children}) {
     }, [])
 
     return (
-        React.cloneElement(children, {ref:magnetic})
+        <div ref={magnetic} style={{ overflow: 'visible' }}>
+            {React.cloneElement(children, { style: { ...children.props.style, pointerEvents: 'none' } })}
+        </div>
     )
 }

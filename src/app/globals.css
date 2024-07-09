@@ -3,3 +3,9 @@ body{
     overflow: hidden; /* Hide scrollbars */
     cursor: wait;
 }
+
+@media (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+}

@@ -35,3 +35,27 @@
     left: 100%;
     top: 0;
 }
+
+.landing {
+    @media (max-width: 768px) {
+        height: 70vh;
+    }
+
+    .sliderContainer {
+        @media (max-width: 768px) {
+            top: calc(70vh - 150px);
+        }
+    }
+
+    .slider p {
+        @media (max-width: 1024px) {
+            font-size: 120px;
+        }
+        @media (max-width: 768px) {
+            font-size: 80px;
+        }
+        @media (max-width: 480px) {
+            font-size: 50px;
+        }
+    }
+}
