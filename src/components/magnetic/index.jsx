@@ -4,23 +4,21 @@ import gsap from 'gsap';
 export default function Magnetic({ children, dragLimit = 100 }) {
     const magnetic = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+    const dragStartPos = useRef({ x: 0, y: 0 });
+    const currentPos = useRef({ x: 0, y: 0 });
 
     useEffect(() => {
         const element = magnetic.current;
         if (!element) return;
 
-        const xTo = gsap.quickTo(element, "x", { duration: 1, ease: "elastic.out(1, 0.3)" });
-        const yTo = gsap.quickTo(element, "y", { duration: 1, ease: "elastic.out(1, 0.3)" });
-
         const moveMagnetic = (clientX, clientY) => {
             if (isDragging) return;
-            const { height, width, left, top } = element.getBoundingClientRect();
-            const x = clientX - (left + width / 2);
-            const y = clientY - (top + height / 2);
-            xTo(x * 0.35);
-            yTo(y * 0.35);
+            const { width, height, left, top } = element.getBoundingClientRect();
+            const centerX = left + width / 2;
+            const centerY = top + height / 2;
+            const x = (clientX - centerX) * 0.35;
+            const y = (clientY - centerY) * 0.35;
+            gsap.to(element, { x, y, duration: 1, ease: "elastic.out(1, 0.3)" });
         };
 
         const resetPosition = () => {
@@ -28,28 +26,27 @@ export default function Magnetic({ children, dragLimit = 100 }) {
                 x: 0,
                 y: 0,
                 duration: 0.5,
-                ease: "elastic.out(1, 0.3)"
+                ease: "elastic.out(1, 0.3)",
+                onComplete: () => {
+                    currentPos.current = { x: 0, y: 0 };
+                }
             });
-            setPosition({ x: 0, y: 0 });
         };
 
         const startDrag = (clientX, clientY) => {
             setIsDragging(true);
-            setStartPos({ x: clientX - position.x, y: clientY - position.y });
+            const { x, y } = currentPos.current;
+            dragStartPos.current = { x: clientX - x, y: clientY - y };
         };
 
         const drag = (clientX, clientY) => {
             if (!isDragging) return;
-            let newX = clientX - startPos.x;
-            let newY = clientY - startPos.y;
-
-            // Limit the dragging range
+            let newX = clientX - dragStartPos.current.x;
+            let newY = clientY - dragStartPos.current.y;
             newX = Math.max(-dragLimit, Math.min(dragLimit, newX));
             newY = Math.max(-dragLimit, Math.min(dragLimit, newY));
-
-            setPosition({ x: newX, y: newY });
-            xTo(newX);
-            yTo(newY);
+            currentPos.current = { x: newX, y: newY };
+            gsap.to(element, { x: newX, y: newY, duration: 0.1 });
         };
 
         const endDrag = () => {
@@ -57,31 +54,34 @@ export default function Magnetic({ children, dragLimit = 100 }) {
             resetPosition();
         };
 
-        // Mouse events
         const handleMouseMove = (e) => isDragging ? drag(e.clientX, e.clientY) : moveMagnetic(e.clientX, e.clientY);
         const handleMouseLeave = resetPosition;
         const handleMouseDown = (e) => startDrag(e.clientX, e.clientY);
         const handleMouseUp = endDrag;
 
-        // Touch events
         const handleTouchStart = (e) => {
             if (e.touches.length > 0) {
+                e.preventDefault();
                 startDrag(e.touches[0].clientX, e.touches[0].clientY);
             }
         };
         const handleTouchMove = (e) => {
             if (e.touches.length > 0) {
+                e.preventDefault();
                 drag(e.touches[0].clientX, e.touches[0].clientY);
             }
         };
-        const handleTouchEnd = endDrag;
+        const handleTouchEnd = (e) => {
+            e.preventDefault();
+            endDrag();
+        };
 
-        element.addEventListener("mousemove", handleMouseMove);
+        element.addEventListener("mousemove", handleMouseMove, { passive: false });
         element.addEventListener("mouseleave", handleMouseLeave);
         element.addEventListener("mousedown", handleMouseDown);
         window.addEventListener("mouseup", handleMouseUp);
-        element.addEventListener("touchstart", handleTouchStart);
-        element.addEventListener("touchmove", handleTouchMove);
+        element.addEventListener("touchstart", handleTouchStart, { passive: false });
+        element.addEventListener("touchmove", handleTouchMove, { passive: false });
         element.addEventListener("touchend", handleTouchEnd);
 
         return () => {
@@ -93,7 +93,7 @@ export default function Magnetic({ children, dragLimit = 100 }) {
             element.removeEventListener("touchmove", handleTouchMove);
             element.removeEventListener("touchend", handleTouchEnd);
         };
-    }, [isDragging, position, dragLimit]);
+    }, [isDragging, dragLimit]);
 
     return (
         <div

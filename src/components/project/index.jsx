@@ -13,7 +13,7 @@ export default function Project({ title, description, techStack, imageSrc }) {
                         <div className={styles.skills}>{techStack}</div>
                     </div>
                     <div className={styles.thumbnail}>
-                        <Magnetic>
+                        <Magnetic dragLimit={50}>
                             <div className={styles.imageContainer}>
                                 <Image
                                     src={imageSrc}
