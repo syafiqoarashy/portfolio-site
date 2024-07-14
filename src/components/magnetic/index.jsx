@@ -75,7 +75,7 @@ export default function Magnetic({ children, dragLimit = 100 }) {
             }
         };
         const handleTouchEnd = endDrag;
-        
+
         element.addEventListener("mousemove", handleMouseMove);
         element.addEventListener("mouseleave", handleMouseLeave);
         element.addEventListener("mousedown", handleMouseDown);

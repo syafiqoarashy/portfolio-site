@@ -38,12 +38,12 @@
 
 .landing {
     @media (max-width: 768px) {
-        height: 70vh;
+        height: 100vh;
     }
 
     .sliderContainer {
         @media (max-width: 768px) {
-            top: calc(70vh - 150px);
+            top: calc(100vh - 150px);
         }
     }
 
