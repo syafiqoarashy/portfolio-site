@@ -21,7 +21,7 @@ export default function index() {
             </span>
                     ))}
                 </p>
-                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>Passionate about XR technology and interactive designs, I'm a third-year international computer science student at the University of Indonesia 🇮🇩. With expertise in UI/UX, 3D, graphic, game and interactive design, I thrive on overcoming challenges and bringing visionary ideas to life.</motion.p>
+                <motion.p variants={opacity} animate={isInView ? "open" : "closed"}>Passionate about XR and interactive design, I'm an international student with a computer science degree from the University of Indonesia, now pursuing UX Design at the University of Queensland. I blend expertise in UI/UX, 3D, and software development to bring innovative ideas to life.</motion.p>
             </div>
         </div>
     )
