@@ -43,7 +43,13 @@ export default function index() {
     return (
         <div className={styles.projects}>
             <div className={styles.header}>
-                <Image width={24} height={24} src={'/images/arrowdown.svg'} alt={"arrow"}/>
+                <Image
+                    width={36}
+                    height={36}
+                    src={'/images/arrowdown.svg'}
+                    alt={"arrow"}
+                    className={styles.arrowIcon}
+                />
                 MY PROJECTS.
             </div>
             <Project {...projectData1}/>

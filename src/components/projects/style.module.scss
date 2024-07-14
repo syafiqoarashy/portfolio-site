@@ -6,7 +6,7 @@
   flex-direction: column;
   .header {
     color: var(--Main-Black, #181717);
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
@@ -14,6 +14,15 @@
     letter-spacing: -0.54px;
     margin-bottom: 12px;
     //text-align: right;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .arrowIcon {
+      width: 36px;  // Ensures the icon is 36px wide
+      height: 36px; // Ensures the icon is 36px tall
+    }
   }
   .header img {
     padding-right: 16px;
@@ -21,7 +30,7 @@
 
   .footer {
     color: var(--Main-Black, #181717);
-    font-family: Inter, serif;
+    font-family: Inter, sans-serif;
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
