@@ -4,9 +4,9 @@ import styles from './style.module.scss';
 import gsap from 'gsap';
 import {useEffect, useRef} from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {FloatingNav} from "@/components/ui/floating-navbar";
 
 export default function Home() {
-
     const firstText = useRef(null);
     const secondText = useRef(null);
     const slider = useRef(null);

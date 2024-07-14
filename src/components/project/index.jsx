@@ -19,8 +19,8 @@ export default function Project({ title, description, techStack, imageSrc }) {
                                     src={imageSrc}
                                     alt={title}
                                     width={640}
-                                    height={364}
-                                    layout="responsive"
+                                    height={480}
+                                    style={{ width: '100%', height: 'auto' }}
                                 />
                             </div>
                         </Magnetic>
